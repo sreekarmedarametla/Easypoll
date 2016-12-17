@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey App</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   <title>Survey</title>
+</head>
+<body ng-controller="getDataController">
+
+<div class="col-md-8" ng-hide="showsurvey">
+   <center>
+    <h2 style="">Survey:&nbsp;{{surveyNameWhole}}</h2></center>
+    <h3>Please fill the survey</h3>
+<h4>This survey is requested by {{surveyOwner}}</h4<form class="form-control">
+            <ul ng-repeat="question in questions">
+                <br>
+                <li>
+                    <div >{{question.questionName}}</div>
+                    <!--<div ng-repeat="op in question.options">-->
+                    <select style="color: black" ng-model="Answers[question.questionName]"  ng-options="option for option in question.options"></select>
+                </li>
+                <br>
+            </ul>
+            <center><button class="btn btn-default" ng-click="ShowAnswers();">Submit</button>
+            </center>
+    </form>
+</div>
+<div class=col-md-8" ng-show="showsurvey">
+    <center><h4>Thanks for answering the poll</h4></center>
+</div>
+
+
+
+</body>
+</html>

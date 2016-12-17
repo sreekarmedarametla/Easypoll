@@ -1,0 +1,96 @@
+
+<button class="btn btn-success" ng-init="getPreviousForms();" ng-click="showme=true" ng-hide="showme" ng-show="showthis">Create a new Survey!</button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" ng-hide="showme" ng-show="showthis">
+      <h4><strong>Previous Surveys</strong></h4>
+
+        <div class="row" ng-repeat="name in surveyNames">
+        <a ng-click="getAllResponses(name.surveyName);">  {{name.surveyName}} </a>
+
+        </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>QuestionName</th>
+          <th>UserAnswer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="response in surveyResponses">
+          <td> {{response.question}} </td>
+          <td> {{response.answer}} </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-4">
+      <form ng-show="showme">
+        <div class="form-group">
+          <label style="font-size: 24px" for="surveyname">Survey Name</label>
+          <br/>
+          <input type="text" class="form-control" id="surveyname" placeholder="Enter the name for your survey" ng-model="surveyname">
+        </div>
+
+        <div class="form-group">
+          <label style="font-size: 16px" for="question">Question</label>
+          <input type="text" class="form-control" id="question" placeholder="Enter your question" ng-model="questionName">
+        </div>
+
+        <div class="form-group">
+          <label style="font-size: 16px" for="noofoptions">Select number of options</label>
+          <select class="form-control" id="noofoptions" ng-model="nooptions" ng-change="updateOptions()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+        <div class="form-group" ng-repeat = "option in options">
+          <input type="text" class="form-control" ng-model="options[option.name]" placeholder="Enter option"/>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <center>
+              <button class="btn btn-default" ng-click="cancelButton(); showme=false">Cancel</button>
+            </center>
+          </div>
+          <div class="col-md-4">
+            <center>
+              <button class="btn btn-default" ng-click="submitButton();">Submit</button>
+            </center>
+          </div>
+          <div class="col-md-4">
+            <center>
+              <button class="btn btn-default" ng-click="nextButton()">Next</button>
+            </center>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    </div>
+    <div class="row">
+      <center>
+      <h4>{{linkText}}</h4>
+        </center>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+<!--<ul>
+  <li ng-repeat="hotel in vm.hotels"><a ng-href="#/hotel/{{ hotel._id }}">{{ hotel.name }}</a></li>
+</ul>-->
