@@ -68,7 +68,7 @@ module.exports.postFormData=function (req,res) {
 }
 
 module.exports.getPreviousSurveys=function (req,res) {
-  var getQuery= "select distinct surveyName  from response where username='"+req.session.username+"'";
+    var getQuery= "select distinct surveyName  from response where username='"+req.session.username+"'";
 
     var connection = getConnection();
     connection.query(getQuery,function (err, result) {
